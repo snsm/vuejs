@@ -29,11 +29,16 @@ export default {
 
     data(){
       return{
-          todos:[
-              {id:1,title:'平安保险'}
-          ],
+          todos:[],
           newTodo:{id:null,title:''}
       }
+    },
+
+    mounted(){
+        this.axios.get('http://www.core.skip.pw/user/show').then((response) => {
+            this.todos = response.data;
+            console.log(response.data)
+        })
     },
 
     computed:{
